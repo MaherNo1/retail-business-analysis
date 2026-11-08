@@ -1,0 +1,41 @@
+raw_data:
+  file_name: "online_retail_II.xlsx"
+  file_path: "data/01_raw/online_retail_II.xlsx"
+  sheets:
+    - "Year 2009-2010"
+    - "Year 2010-2011"
+
+interim_data:
+  file_path: "data/02_interim/raw_combined.parquet"
+
+processed_data:
+  file_path: "data/03_processed/clean_online_retail.parquet"
+
+cleaning_rules:
+  # Stock codes to filter out (non-inventory / admin fees)
+  excluded_stock_codes:
+    - "POST"
+    - "D"
+    - "M"
+    - "BANK CHARGES"
+    - "AMAZONFEE"
+    - "TEST"
+    - "DOT"
+    - "CRUK"
+  
+  # Minimum valid thresholds
+  min_quantity: 1
+  min_unit_price: 0.001
+  
+  # Cancellation invoice prefix indicator
+  cancellation_prefix: "C"
+
+column_mappings:
+  Invoice: "invoice_no"
+  StockCode: "stock_code"
+  Description: "description"
+  Quantity: "quantity"
+  InvoiceDate: "invoice_date"
+  Price: "unit_price"
+  Customer ID: "customer_id"
+  Country: "country"

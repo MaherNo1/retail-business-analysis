@@ -1,0 +1,33 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+venv/
+env/
+ENV/
+.venv/
+
+# Environment Variables & Secrets
+.env
+*.pem
+*.key
+
+# Data Files & Storage (Crucial: never commit local data)
+data/01_raw/*
+data/02_interim/*
+data/03_processed/*
+!data/01_raw/.gitkeep
+!data/02_interim/.gitkeep
+!data/03_processed/.gitkeep
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# VS Code & IDE Settings
+.vscode/
+.idea/
+
+# Power BI Local Locks & Temp Files
+*.pbix.lock

@@ -29,37 +29,18 @@ Key Analytical Focus Areas:
 ## 📁 Repository Structure
 
 ```text
-online_retail_ii_project/
-├── .env.example                 # Template for database connection variables
-├── .gitignore                   # Excludes raw data, local venvs, and secrets
-├── README.md                    # Project documentation
-├── requirements.txt             # Python dependencies
-│
+retail-business-analysis/
 ├── config/
-│   └── settings.yaml            # Pipeline thresholds, file paths, and cleaning configs
-│
-├── data/                        # Ignored by Git (stores local binary files)
-│   ├── 01_raw/                  # Raw UCI dataset (online_retail_II.xlsx)
-│   ├── 02_interim/              # Combined staging files (.parquet)
-│   └── 03_processed/            # Cleaned, analytics-ready datasets (.parquet)
-│
-├── notebooks/                   # Exploratory Data Analysis & Prototyping
-│   ├── 01_raw_data_exploration.ipynb
-│   ├── 02_anomaly_detection.ipynb
-│   └── 03_rfm_prototyping.ipynb
-│
-├── src/                         # Production Python ETL Modules
-│   ├── __init__.py
-│   ├── extract.py               # Ingests multi-sheet Excel files
-│   ├── transform.py             # Business logic: handles cancellations, non-inventory items
-│   ├── load.py                  # Parquet export & DB streaming
-│   └── main.py                  # Master execution script
-│
-├── sql/                         # Relational Data Modeling & Analytics Views
-│   ├── 01_schema.sql            # Star Schema (Dimensions & Fact tables)
-│   ├── 02_rfm_segmentation.sql  # SQL queries for RFM customer scoring
-│   └── 03_powerbi_views.sql     # Database views optimized for Power BI
-│
-└── powerbi/                     # Business Intelligence Workspace
-    ├── online_retail_analytics.pbix  # Interactive Dashboard Report
-    └── dax_measures.md               # DAX Formula Catalog & Documentation
+│   └── settings.yaml          # Externalized business rules & schema mapping
+├── data/
+│   ├── 01_raw/                # Raw Online Retail II dataset (Excel)
+│   ├── 02_interim/            # Staged concatenated Parquet layer
+│   └── 03_processed/          # Clean, analytics-ready Parquet dataset
+├── src/
+│   ├── extract.py             # Reads sheets, standardizes types, outputs interim Parquet
+│   ├── transform.py           # Business filtering, rule enforcement, feature engineering
+│   └── load.py                # Dataset validation and loading pipeline
+├── powerbi/
+│   ├── retail_dashboard.pbix  # Interactive Power BI report
+│   └── custom_theme.json      # Custom executive UI theme
+└── README.md
